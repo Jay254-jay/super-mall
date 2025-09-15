@@ -1,6 +1,17 @@
-// productController.js
-
 const productModel = require("../models/productModel");
+
+exports.createProduct = (req, res) => {
+    const { name, price, description } = req.body;
+    const image = req.file ? `/uploads/${req.file.filename}` : null;
+    productModel.createProduct(name, price, description, image)
+        .then(result => {
+            res.status(201).json({ message: 'Product created', result });
+        })
+        .catch(err => {
+            console.error(err.message);
+            res.status(500).send("Error creating product.");
+        });
+};
 
 exports.getAllProducts = (req, res) => {
     productModel.getAllProducts()
@@ -12,7 +23,6 @@ exports.getAllProducts = (req, res) => {
             res.status(500).json({ error: "Internal Server Error" });
         });
 };
-
 
 exports.getProductDetailsById = (req, res) => {
     const productId = req.params.id;
@@ -35,18 +45,6 @@ exports.allOrderByProductId = (req, res) => {
         .catch(err => {
             console.error(err.message);
             res.status(500).send("Error fetching product.");
-        });
-};
-
-exports.createProduct = (req, res) => {
-    const { name, price, description } = req.body;
-    productModel.createProduct(name, price, description)
-        .then(result => {
-            res.send(result);
-        })
-        .catch(err => {
-            console.error(err.message);
-            res.status(500).send("Error creating product.");
         });
 };
 

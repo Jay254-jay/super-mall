@@ -1,3 +1,53 @@
+// Get all users (for admin)
+exports.getAllUsers = () => {
+    return new Promise((resolve, reject) => {
+        pool.query(
+            "SELECT userId, email, isAdmin, fname, lname FROM users;",
+            (err, results) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(results);
+                }
+            }
+        );
+    });
+};
+
+// Update user (for admin)
+exports.updateUser = (userId, userData) => {
+    const { email, isAdmin, fname, lname } = userData;
+    return new Promise((resolve, reject) => {
+        pool.query(
+            "UPDATE users SET email = ?, isAdmin = ?, fname = ?, lname = ? WHERE userId = ?;",
+            [email, isAdmin, fname, lname, userId],
+            (err, result) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(result);
+                }
+            }
+        );
+    });
+};
+
+// Delete user (for admin)
+exports.deleteUser = (userId) => {
+    return new Promise((resolve, reject) => {
+        pool.query(
+            "DELETE FROM users WHERE userId = ?;",
+            [userId],
+            (err, result) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(result);
+                }
+            }
+        );
+    });
+};
 // userModel.js
 
 const pool = require("../database/connection");

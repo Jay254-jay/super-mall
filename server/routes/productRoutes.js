@@ -3,6 +3,10 @@
 const express = require("express");
 const router = express.Router();
 const productController = require("../controllers/productController");
+const upload = require("../middlewares/upload");
+
+// Route to create product with image
+router.post('/add', upload.single('image'), productController.createProduct);
 
 // Route to get all products
 router.get("/", productController.getAllProducts);

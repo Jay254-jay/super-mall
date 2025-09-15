@@ -7,12 +7,13 @@ const orderRoutes = require("./routes/orderRoutes");
 const cartRoutes = require("./routes/cartRoutes");
 const userToken = require("./routes/userTokenRoute")
 
+const mpesaRoutes = require("./routes/mpesaRoutes");
+
 const app = express();
 
+app.use('/uploads', express.static('uploads'));
 app.use(cors());
 app.use(express.json());
-
-// Connect to the database
 
 // Mount routes
 app.use("/api/users", userRoutes);
@@ -21,8 +22,22 @@ app.use("/api/orders", orderRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/token", userToken)
 
-const PORT = process.env.PORT || 3001;
+// M-Pesa payment route
+app.use("/api/mpesa", mpesaRoutes);
 
-app.listen(PORT, () => {
+const PORT = process.env.PORT || 3001;
+const server = app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
+});
+
+server.on('error', (err) => {
+    if (err.code === 'EADDRINUSE') {
+        console.error(`Port ${PORT} is already in use. Trying a different port...`);
+        const altPort = Number(PORT) + 1;
+        app.listen(altPort, () => {
+            console.log(`Server is running on port ${altPort}`);
+        });
+    } else {
+        throw err;
+    }
 });

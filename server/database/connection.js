@@ -7,6 +7,7 @@ let connectionParams;
 // Use flag to toggle between localhost and server configurations
 const useLocalhost = process.env.USE_LOCALHOST === 'true';
 
+
 if (useLocalhost) {
     console.log("Inside local")
     connectionParams = {
@@ -14,6 +15,9 @@ if (useLocalhost) {
         host: "127.0.0.1",
         password: "Mwangi254.",
         database: "e_commerce",
+        waitForConnections: true,
+        connectionLimit: 10,
+        queueLimit: 0
     };
 } else {
     connectionParams = {

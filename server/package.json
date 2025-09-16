@@ -2,10 +2,10 @@
     "name": "e-commerce-server",
     "version": "1.0.0",
     "description": "",
-    "main": "app.js",
+    "main": "main.js",
     "scripts": {
-        "start": "node app.js",
-        "debug": "nodemon --inspect app.js",
+        "start": "node main.js",
+        "debug": "nodemon --inspect main.js",
         "build": "npm install"
     },
     "keywords": [],

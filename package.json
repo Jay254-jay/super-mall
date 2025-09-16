@@ -1,0 +1,21 @@
+{
+  "name": "mall",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ForgotPassword.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jay254-jay/super-mall.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Jay254-jay/super-mall/issues"
+  },
+  "homepage": "https://github.com/Jay254-jay/super-mall#readme"
+}

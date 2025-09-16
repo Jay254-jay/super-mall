@@ -1,5 +1,5 @@
 {
-    "name": "E-commerce-Server",
+    "name": "e-commerce-server",
     "version": "1.0.0",
     "description": "",
     "main": "app.js",
@@ -26,5 +26,6 @@
     "devDependencies": {
         "eslint": "^7.23.0",
         "nodemon": "^2.0.7"
-    }
+    },
+    "type": "commonjs"
 }

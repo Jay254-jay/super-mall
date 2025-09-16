@@ -2,10 +2,10 @@
   "name": "mall",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "main.js",
   "scripts": {
-    "start": "node app.js",
-    "debug": "nodemon --inspect server.js",
+    "start": "node main.js",
+    "debug": "nodemon --inspect main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

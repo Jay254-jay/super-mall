@@ -1,7 +1,7 @@
 {
   "name": "e-commerce-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "EarthMall backend server",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -23,5 +23,8 @@
     "eslint": "^7.23.0",
     "nodemon": "^2.0.7"
   },
-  "type": "commonjs"
+  "type": "commonjs",
+  "engines": {
+    "node": "20.x"
+  }
 }
